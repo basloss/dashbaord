@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Complaints Data Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        h1, h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .table-container {
+            margin: 20px auto;
+            width: 90%;
+        }
+        .chart-container {
+            height: 400px;
+        }
+        .tab-content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hostel Complaints Data Dashboard</h1>
+        <a href="index.html">Back to home</a>
+        <!-- Tabs Section for Complaints Data -->
+        <h2>Hostel Complaints Insights</h2>
+        <ul class="nav nav-tabs" id="complaintsTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="boys-hostel-tab" data-bs-toggle="tab" data-bs-target="#boys-hostel-tab-content" type="button" role="tab" aria-controls="boys-hostel-tab-content" aria-selected="true">Boys Hostel Complaints</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="girls-hostel-tab" data-bs-toggle="tab" data-bs-target="#girls-hostel-tab-content" type="button" role="tab" aria-controls="girls-hostel-tab-content" aria-selected="false">Girls Hostel Complaints</button>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <!-- Boys Hostel Complaints Data -->
+            <div class="tab-pane fade show active" id="boys-hostel-tab-content" role="tabpanel" aria-labelledby="boys-hostel-tab">
+                <h3>Boys Hostel Complaints Overview</h3>
+                <div class="table-container">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Hostel Name</th>
+                                <th>Raised</th>
+                                <th>Yet to Assign</th>
+                                <th>In Progress</th>
+                                <th>SLA</th>
+                                <th>Pending</th>
+                                <th>Closed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Boys Hostel 1</td>
+                                <td>25</td>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>3</td>
+                                <td>10</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>Boys Hostel 2</td>
+                                <td>35</td>
+                                <td>4</td>
+                                <td>7</td>
+                                <td>5</td>
+                                <td>11</td>
+                                <td>24</td>
+                            </tr>
+                            <tr>
+                                <td>Boys Hostel 3</td>
+                                <td>20</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>6</td>
+                                <td>14</td>
+                            </tr>
+                            <tr>
+                                <td>Boys Hostel 4</td>
+                                <td>15</td>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>3</td>
+                                <td>6</td>
+                                <td>9</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="boysComplaintsChart"></canvas>
+                </div>
+
+                <!-- Pie Chart for Boys Hostel Complaints -->
+                <div class="chart-container">
+                    <h4>Boys Hostel Complaints Proportions (Pie Chart)</h4>
+                    <canvas id="boysComplaintsPieChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Girls Hostel Complaints Data -->
+            <div class="tab-pane fade" id="girls-hostel-tab-content" role="tabpanel" aria-labelledby="girls-hostel-tab">
+                <h3>Girls Hostel Complaints Overview</h3>
+                <div class="table-container">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Hostel Name</th>
+                                <th>Raised</th>
+                                <th>Yet to Assign</th>
+                                <th>In Progress</th>
+                                <th>SLA</th>
+                                <th>Pending</th>
+                                <th>Closed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Girls Hostel 1</td>
+                                <td>10</td>
+                                <td>5</td>
+                                <td>4</td>
+                                <td>4</td>
+                                <td>9</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Girls Hostel 2</td>
+                                <td>15</td>
+                                <td>4</td>
+                                <td>7</td>
+                                <td>5</td>
+                                <td>11</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>Girls Hostel 3</td>
+                                <td>7</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>6</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Girls Hostel 4</td>
+                                <td>9</td>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>3</td>
+                                <td>6</td>
+                                <td>3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="girlsComplaintsChart"></canvas>
+                </div>
+
+                <!-- Pie Chart for Girls Hostel Complaints -->
+                <div class="chart-container">
+                    <h4>Girls Hostel Complaints Proportions (Pie Chart)</h4>
+                    <canvas id="girlsComplaintsPieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Boys Hostel Complaints Bar Chart Data
+        const boysComplaintsData = {
+            labels: ["Boys Hostel 1", "Boys Hostel 2", "Boys Hostel 3", "Boys Hostel 4"],
+            datasets: [
+                {
+                    label: "Raised",
+                    data: [25, 35, 20, 15],
+                    backgroundColor: "rgba(255, 99, 132, 0.6)"
+                },
+                {
+                    label: "Yet to Assign",
+                    data: [5, 4, 3, 2],
+                    backgroundColor: "rgba(255, 159, 64, 0.6)"
+                },
+                {
+                    label: "In Progress",
+                    data: [5, 7, 3, 4],
+                    backgroundColor: "rgba(255, 206, 86, 0.6)"
+                },
+                {
+                    label: "SLA",
+                    data: [3, 5, 3, 3],
+                    backgroundColor: "rgba(255, 99, 132, 0.6)"
+                },
+                {
+                    label: "Pending",
+                    data: [10, 11, 6, 6],
+                    backgroundColor: "rgba(75, 192, 192, 0.6)"
+                },
+                {
+                    label: "Closed",
+                    data: [15, 24, 14, 9],
+                    backgroundColor: "rgba(54, 162, 235, 0.6)"
+                }
+            ]
+        };
+
+        // Girls Hostel Complaints Bar Chart Data
+        const girlsComplaintsData = {
+            labels: ["Girls Hostel 1", "Girls Hostel 2", "Girls Hostel 3", "Girls Hostel 4"],
+            datasets: [
+                {
+                    label: "Raised",
+                    data: [10, 15, 7, 9],
+                    backgroundColor: "rgba(255, 99, 132, 0.6)"
+                },
+                {
+                    label: "Yet to Assign",
+                    data: [5, 4, 3, 2],
+                    backgroundColor: "rgba(255, 159, 64, 0.6)"
+                },
+                {
+                    label: "In Progress",
+                    data: [4, 7, 3, 4],
+                    backgroundColor: "rgba(255, 206, 86, 0.6)"
+                },
+                {
+                    label: "SLA",
+                    data: [4, 5, 2, 3],
+                    backgroundColor: "rgba(255, 99, 132, 0.6)"
+                },
+                {
+                    label: "Pending",
+                    data: [9, 11, 6, 6],
+                    backgroundColor: "rgba(75, 192, 192, 0.6)"
+                },
+                {
+                    label: "Closed",
+                    data: [1, 4, 1, 3],
+                    backgroundColor: "rgba(54, 162, 235, 0.6)"
+                }
+            ]
+        };
+
+        // Boys Hostel Bar Chart
+        new Chart(document.getElementById("boysComplaintsChart"), {
+            type: "bar",
+            data: boysComplaintsData
+        });
+
+        // Girls Hostel Bar Chart
+        new Chart(document.getElementById("girlsComplaintsChart"), {
+            type: "bar",
+            data: girlsComplaintsData
+        });
+
+        // Boys Hostel Pie Chart Data
+        const boysComplaintsPieData = {
+            labels: ["Raised", "Yet to Assign", "In Progress", "SLA", "Pending", "Closed"],
+            datasets: [{
+                data: [25 + 5 + 5 + 3 + 10 + 15, 5 + 4 + 3 + 2, 5 + 7 + 3 + 4, 3 + 5 + 3 + 3, 10 + 11 + 6 + 6, 15 + 24 + 14 + 9], // Sum of each category
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.6)",
+                    "rgba(255, 159, 64, 0.6)",
+                    "rgba(255, 206, 86, 0.6)",
+                    "rgba(75, 192, 192, 0.6)",
+                    "rgba(54, 162, 235, 0.6)",
+                    "rgba(153, 102, 255, 0.6)"
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        // Girls Hostel Pie Chart Data
+        const girlsComplaintsPieData = {
+            labels: ["Raised", "Yet to Assign", "In Progress", "SLA", "Pending", "Closed"],
+            datasets: [{
+                data: [10 + 15 + 7 + 9, 5 + 4 + 3 + 2, 4 + 7 + 3 + 4, 4 + 5 + 2 + 3, 9 + 11 + 6 + 6, 1 + 4 + 1 + 3], // Sum of each category
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.6)",
+                    "rgba(255, 159, 64, 0.6)",
+                    "rgba(255, 206, 86, 0.6)",
+                    "rgba(75, 192, 192, 0.6)",
+                    "rgba(54, 162, 235, 0.6)",
+                    "rgba(153, 102, 255, 0.6)"
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        // Boys Hostel Pie Chart
+        new Chart(document.getElementById("boysComplaintsPieChart"), {
+            type: "pie",
+            data: boysComplaintsPieData
+        });
+
+        // Girls Hostel Pie Chart
+        new Chart(document.getElementById("girlsComplaintsPieChart"), {
+            type: "pie",
+            data: girlsComplaintsPieData
+        });
+    </script>
+</body>
+</html>
